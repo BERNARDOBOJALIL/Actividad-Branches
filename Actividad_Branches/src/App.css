@@ -1,42 +1,78 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Fondo general */
+body {
+  background-color: #f9f9f9; /* Fondo claro */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.app-container {
   text-align: center;
+  padding: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Lista de Pokémon */
+.pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
+/* Tarjetas */
 .card {
-  padding: 2em;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 200px;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.2s; /* Añadido para el efecto de hover */
 }
 
-.read-the-docs {
-  color: #888;
+.card:hover {
+  transform: translateY(-5px); /* Efecto de levantamiento en hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa al hacer hover */
+}
+
+.card img {
+  width: 100px;
+  height: auto;
+}
+
+.card h3 {
+  color: #333;
+}
+
+.card-body p {
+  color: #555;
+}
+
+/* Paginación */
+.pagination {
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #0073e6; /* Color de fondo del botón */
+  color: white; /* Color de texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s; /* Transición suave al cambiar el color */
+}
+
+.pagination button:hover {
+  background-color: #005bb5; /* Color al pasar el mouse sobre el botón */
+}
+
+.loading, .error {
+  color: #333;
+  font-size: 18px;
 }
