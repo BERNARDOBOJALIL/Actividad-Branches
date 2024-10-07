@@ -1,0 +1,29 @@
+/* Navbar Container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #ff9700;
+    color: #fff;
+}
+
+/* Brand */
+
+/* Search Bar */
+.navbar-search input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Navbar Links */
+.navbar-links a {
+    margin-left: 1rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-links a:hover {
+    color: #ddd;
+}

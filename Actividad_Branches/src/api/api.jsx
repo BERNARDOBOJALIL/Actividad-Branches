@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../App.css';
-import Footer from "../footer/components/footer"
+import Footer from "../footer/components/footer";
+import Navbar from "../navbar/navbar";
 
 const Api = () => {
   const [pokemonList, setPokemonList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const limit = 10; // Número de Pokémon que se muestran por página 
+  const [search, setSearch] = useState(''); // Estado para el filtro de búsqueda
+  const limit = 10;
 
   // Función para obtener la lista de Pokémon
   const fetchPokemonList = async (page) => {
     setLoading(true);
     setError(null);
-    const offset = (page - 1) * limit; // Calcula el número de Pokemon que se debe saltar para mostrar nuevos en la página actual
+    const offset = (page - 1) * limit;
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
       const results = response.data.results;
 
-      // Mapeo para obtener información de cada Pokémon
+      // Obtener información detallada de cada Pokémon
       const pokemonDataPromises = results.map(async (pokemon) => {
         const pokemonDetails = await axios.get(pokemon.url);
         return {
@@ -42,7 +44,7 @@ const Api = () => {
     setLoading(false);
   };
 
-  // Cargar los Pokémon una vez que se detecta que cambia current page
+  // Cargar los Pokémon cuando cambie currentPage
   useEffect(() => {
     fetchPokemonList(currentPage);
   }, [currentPage]);
@@ -52,16 +54,22 @@ const Api = () => {
     setCurrentPage((prevPage) => prevPage + direction);
   };
 
+  // Filtrar la lista de Pokémon con base en el valor de búsqueda
+  const filteredPokemon = pokemonList.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <>
+      {/* Pasar setSearch al Navbar */}
+      <Navbar setPokemon={setSearch} />
       <div className="app-container">
         <h1 style={{ color: '#ffcd0d' }}>Pokémon</h1>
         {loading && <p className="loading">Cargando...</p>}
         {error && <p className="error">{error}</p>}
 
         <div className="pokemon-list">
-          {pokemonList.map((pokemon) => (
+          {filteredPokemon.map((pokemon) => (
             <div key={pokemon.id} className="card">
               <img src={pokemon.image} alt={pokemon.name} />
               <div className="card-body">
