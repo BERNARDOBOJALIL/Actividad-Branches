@@ -1,6 +1,7 @@
 /* Fondo general */
 body {
-  background-color: #f9f9f9; /* Fondo claro */
+  background-color: #f9f9f9;
+  /* Fondo claro */
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -30,12 +31,15 @@ body {
   text-align: center;
   padding: 20px;
   margin-bottom: 20px;
-  transition: transform 0.2s; /* Añadido para el efecto de hover */
+  transition: transform 0.2s;
+  /* Añadido para el efecto de hover */
 }
 
 .card:hover {
-  transform: translateY(-5px); /* Efecto de levantamiento en hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa al hacer hover */
+  transform: translateY(-5px);
+  /* Efecto de levantamiento en hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  /* Sombra más intensa al hacer hover */
 }
 
 .card img {
@@ -61,18 +65,25 @@ body {
   margin: 0 10px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #0073e6; /* Color de fondo del botón */
-  color: white; /* Color de texto */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  transition: background-color 0.3s; /* Transición suave al cambiar el color */
+  background-color: #0073e6;
+  /* Color de fondo del botón */
+  color: white;
+  /* Color de texto */
+  border: none;
+  /* Sin borde */
+  border-radius: 5px;
+  /* Bordes redondeados */
+  transition: background-color 0.3s;
+  /* Transición suave al cambiar el color */
 }
 
 .pagination button:hover {
-  background-color: #005bb5; /* Color al pasar el mouse sobre el botón */
+  background-color: #005bb5;
+  /* Color al pasar el mouse sobre el botón */
 }
 
-.loading, .error {
+.loading,
+.error {
   color: #333;
   font-size: 18px;
 }
