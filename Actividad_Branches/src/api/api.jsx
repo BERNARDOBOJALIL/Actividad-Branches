@@ -56,8 +56,8 @@ const Api = () => {
         id: pokemonDetails.id,
         name: pokemonDetails.name,
         image: pokemonDetails.sprites.front_default,
-        height: pokemonDetails.height / 10,
-        weight: pokemonDetails.weight / 10,
+        height: pokemonDetails.height,
+        weight: pokemonDetails.weight,
         types: pokemonDetails.types.map((typeInfo) => typeInfo.type.name).join(', '),
         baseExperience: pokemonDetails.base_experience,
       }];
