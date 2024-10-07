@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../App.css';
+import Footer from "../footer/components/footer"
 
 const Api = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -53,42 +54,47 @@ const Api = () => {
 
 
   return (
-    <div className="app-container">
-      <h1 style={{ color: '#ffcd0d' }}>Pokémon</h1>
-      {loading && <p className="loading">Cargando...</p>}
-      {error && <p className="error">{error}</p>}
+    <>
+      <div className="app-container">
+        <h1 style={{ color: '#ffcd0d' }}>Pokémon</h1>
+        {loading && <p className="loading">Cargando...</p>}
+        {error && <p className="error">{error}</p>}
 
-      <div className="pokemon-list">
-        {pokemonList.map((pokemon) => (
-          <div key={pokemon.id} className="card">
-            <img src={pokemon.image} alt={pokemon.name} />
-            <div className="card-body">
-              <h3>{pokemon.name.toUpperCase()}</h3>
-              <p><strong>Height:</strong> {pokemon.height / 10} m</p>
-              <p><strong>Weight:</strong> {pokemon.weight / 10} kg</p>
-              <p><strong>Type:</strong> {pokemon.types}</p>
-              <p><strong>Base Experience:</strong> {pokemon.baseExperience}</p>
+        <div className="pokemon-list">
+          {pokemonList.map((pokemon) => (
+            <div key={pokemon.id} className="card">
+              <img src={pokemon.image} alt={pokemon.name} />
+              <div className="card-body">
+                <h3>{pokemon.name.toUpperCase()}</h3>
+                <p><strong>Height:</strong> {pokemon.height / 10} m</p>
+                <p><strong>Weight:</strong> {pokemon.weight / 10} kg</p>
+                <p><strong>Type:</strong> {pokemon.types}</p>
+                <p><strong>Base Experience:</strong> {pokemon.baseExperience}</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      {/* Paginación */}
-      <div className="pagination">
-        <button
-          onClick={() => handlePageChange(-1)}
-          disabled={currentPage === 1}
-        >
-          Anterior
-        </button>
-        <span style={{ color: 'black' }}>Página {currentPage}</span>
-        <button
-          onClick={() => handlePageChange(1)}
-        >
-          Siguiente
-        </button>
+        {/* Paginación */}
+        <div className="pagination">
+          <button
+            onClick={() => handlePageChange(-1)}
+            disabled={currentPage === 1}
+          >
+            Anterior
+          </button>
+          <span style={{ color: 'black' }}>Página {currentPage}</span>
+          <button
+            onClick={() => handlePageChange(1)}
+          >
+            Siguiente
+          </button>
+        </div>
       </div>
-    </div>
+      <div style={({ display: 'flex', justifyContent: 'center', width: "100%" })}>
+        <Footer />
+      </div>
+    </>
   );
 };
 
